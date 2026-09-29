@@ -1,0 +1,20 @@
+{
+  "packageDirectories": [
+    {
+      "versionName": "Version 1.0",
+      "versionNumber": "1.0.0.NEXT",
+      "path": "force-app",
+      "default": true,
+      "package": "Cloudial Picklist Path",
+      "versionDescription": "Reusable chevron picklist path for nested LWCs, Flow screens, and record pages."
+    }
+  ],
+  "name": "Cloudial Picklist Path",
+  "namespace": "CloudialPackage",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "64.0",
+  "packageAliases": {
+    "Cloudial Picklist Path": "0HoJ6000000005zKAA",
+    "Cloudial Picklist Path@1.0.0-1": "04tJ6000000Lx39IAC"
+  }
+}

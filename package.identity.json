@@ -1,0 +1,22 @@
+{
+  "$schema": "./schemas/package-identity.schema.json",
+  "schemaVersion": 1,
+  "id": "cloudial-picklist-path",
+  "name": "Cloudial Picklist Path",
+  "description": "A reusable Salesforce LWC chevron picklist path with describe or explicit steps, event/update/readOnly modes, Flow and record-page exposure, theming, and optional celebration.",
+  "features": [
+    "Chevron path from picklist describe or explicit steps",
+    "Interaction modes: event, update, and readOnly",
+    "Nested LWC, Flow Screen, and Lightning record page exposure",
+    "Excluded values, label overrides, and disabled steps",
+    "LTR/RTL direction and CSS custom property theming",
+    "Optional celebration confetti with reduced-motion skip"
+  ],
+  "whenToUse": "Use when a Salesforce UI needs a reusable picklist progress path that can be nested, placed on a record page or Flow screen, and optionally write the field via Lightning Data Service.",
+  "repository": "https://github.com/SupportCloudial/Cloudial-Picklist-Path",
+  "packageType": "managed",
+  "status": "released",
+  "version": "1.0.0",
+  "subscriberPackageVersionId": "04tJ6000000Lx39IAC",
+  "installUrl": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ6000000Lx39IAC"
+}

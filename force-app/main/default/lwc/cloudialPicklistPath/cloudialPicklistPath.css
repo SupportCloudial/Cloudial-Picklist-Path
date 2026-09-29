@@ -1,0 +1,210 @@
+:host {
+  display: block;
+  --cloudial-picklist-path-border: #d8dde6;
+  --cloudial-picklist-path-text: #0b3a6a;
+  --cloudial-picklist-path-current: #4194f9;
+  --cloudial-picklist-path-current-hover: #2f7fe2;
+  --cloudial-picklist-path-chevron: 18px;
+
+  /* Short aliases (same tokens). Prefer the --cloudial-picklist-path-* names. */
+  --cpp-border: var(--cloudial-picklist-path-border);
+  --cpp-text: var(--cloudial-picklist-path-text);
+  --cpp-current: var(--cloudial-picklist-path-current);
+  --cpp-current-hover: var(--cloudial-picklist-path-current-hover);
+  --cpp-chevron: var(--cloudial-picklist-path-chevron);
+}
+
+.path {
+  display: inline-flex;
+  align-items: stretch;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--cpp-border);
+  border: 1px solid var(--cpp-border);
+}
+
+.path--neutral {
+  --cloudial-picklist-path-current: #706e6b;
+  --cloudial-picklist-path-current-hover: #5c5a57;
+}
+
+.path__step {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 38px;
+  padding: 0 1rem;
+  border: none;
+  --step-bg: var(--cpp-border);
+  background: var(--step-bg);
+  color: var(--cpp-text);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 1;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--cpp-chevron)) 0,
+    100% 50%,
+    calc(100% - var(--cpp-chevron)) 100%,
+    0 100%,
+    var(--cpp-chevron) 50%
+  );
+}
+
+.path__step:first-child {
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--cpp-chevron)) 0,
+    100% 50%,
+    calc(100% - var(--cpp-chevron)) 100%,
+    0 100%
+  );
+}
+
+.path__step:last-child {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    var(--cpp-chevron) 50%
+  );
+}
+
+.path__step + .path__step {
+  margin-inline-start: calc(var(--cpp-chevron) * -1);
+}
+
+.path__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  inset-inline-end: 0;
+  top: 0;
+  width: var(--cpp-chevron);
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.9);
+  clip-path: polygon(
+    0 0,
+    100% 50%,
+    0 100%,
+    0 calc(100% - 2px),
+    calc(100% - 2px) 50%,
+    0 2px
+  );
+}
+
+/* Mirrored chevrons when direction is explicitly rtl (or inherited via dir). */
+.path[dir="rtl"] .path__step {
+  clip-path: polygon(
+    100% 0,
+    var(--cpp-chevron) 0,
+    0 50%,
+    var(--cpp-chevron) 100%,
+    100% 100%,
+    calc(100% - var(--cpp-chevron)) 50%
+  );
+}
+
+.path[dir="rtl"] .path__step:first-child {
+  clip-path: polygon(
+    100% 0,
+    var(--cpp-chevron) 0,
+    0 50%,
+    var(--cpp-chevron) 100%,
+    100% 100%
+  );
+}
+
+.path[dir="rtl"] .path__step:last-child {
+  clip-path: polygon(
+    100% 0,
+    0 0,
+    0 100%,
+    100% 100%,
+    calc(100% - var(--cpp-chevron)) 50%
+  );
+}
+
+.path[dir="rtl"] .path__step:not(:last-child)::after {
+  clip-path: polygon(
+    100% 0,
+    0 50%,
+    100% 100%,
+    100% calc(100% - 2px),
+    2px 50%,
+    100% 2px
+  );
+}
+
+.path__step--current {
+  --step-bg: var(--cpp-current);
+  color: #ffffff;
+}
+
+.path__step--current:hover:not(:disabled):not(.path__step--disabled) {
+  --step-bg: var(--cpp-current-hover);
+}
+
+.path__step--complete,
+.path__step--upcoming {
+  --step-bg: var(--cpp-border);
+  color: var(--cpp-text);
+}
+
+.path__step:disabled,
+.path__step--disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.path__step-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Full-screen celebration overlay (CSS/DOM only; ~2s). */
+.celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.celebration__particle {
+  position: absolute;
+  top: -12px;
+  border-radius: 2px;
+  opacity: 0.95;
+  animation-name: celebration-fall;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes celebration-fall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(12px, 110vh, 0) rotate(540deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celebration,
+  .celebration__particle {
+    display: none !important;
+    animation: none !important;
+  }
+}
+

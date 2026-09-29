@@ -1,0 +1,27 @@
+<template>
+  <lightning-card title="Cloudial Picklist Path — nested smoke">
+    <div class="slds-p-around_medium">
+      <cloudialPackage-cloudial-picklist-path
+        steps={steps}
+        value={selectedValue}
+        interaction="event"
+        celebration-value={celebrationValue}
+        direction="ltr"
+        variant="default"
+        onpathstepclick={handlePathStepClick}
+      ></cloudialPackage-cloudial-picklist-path>
+
+      <p class="slds-m-top_medium" data-id="selected-value">
+        Selected value: {selectedValue}
+      </p>
+      <p data-id="last-click-label">Last click label: {lastClickLabel}</p>
+
+      <lightning-button
+        class="slds-m-top_small"
+        label="Celebrate"
+        onclick={handleCelebrate}
+        data-id="celebrate-button"
+      ></lightning-button>
+    </div>
+  </lightning-card>
+</template>

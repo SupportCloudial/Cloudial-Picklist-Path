@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Cloudial Picklist Path</masterLabel>
+    <description>Chevron picklist path for nested LWC, Flow screens, and Lightning record pages.</description>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage,lightning__RecordPage">
+            <property name="objectApiName" type="String" label="Object API Name" description="Object that owns the picklist field. On record pages this is usually provided by the page." />
+            <property name="fieldApiName" type="String" label="Field API Name" description="Picklist field API name used for steps and optional LDS updates." />
+            <property name="recordId" type="String" label="Record Id" description="Record id for wired value, record type resolve, and update mode. On record pages this is usually provided by the page." />
+            <property name="recordTypeId" type="String" label="Record Type Id" description="Optional. When omitted with a record id, the record's record type is used for describe." />
+            <property name="value" type="String" label="Value" description="Current picklist API value. Leave empty on record pages to wire the field from the record." />
+            <property name="interaction" type="String" label="Interaction" default="event" datasource="event,update,readOnly" description="event: notify parent; update: write via Lightning Data Service; readOnly: display only." />
+            <property name="disabled" type="Boolean" label="Disabled" default="false" />
+            <property name="direction" type="String" label="Text direction" datasource="ltr,rtl" description="Optional. Empty inherits page/locale direction." />
+            <property name="variant" type="String" label="Variant" default="default" datasource="default,neutral" description="Color preset. Override further with CSS custom properties." />
+            <property name="celebrationValue" type="String" label="Celebration Value" description="Optional picklist API value that arms confetti. In update mode, celebrates after a successful save to this value." />
+        </targetConfig>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="value" type="String" label="Value" description="Current picklist API value. Output updates on step selection in event mode and after a successful update." />
+            <property name="interaction" type="String" label="Interaction" default="event" datasource="event,update,readOnly" role="inputOnly" description="event: Flow output value on click; update: write via Lightning Data Service; readOnly: display only." />
+            <property name="objectApiName" type="String" label="Object API Name" role="inputOnly" />
+            <property name="fieldApiName" type="String" label="Field API Name" role="inputOnly" />
+            <property name="recordId" type="String" label="Record Id" role="inputOnly" />
+            <property name="recordTypeId" type="String" label="Record Type Id" role="inputOnly" />
+            <property name="disabled" type="Boolean" label="Disabled" default="false" role="inputOnly" />
+            <property name="direction" type="String" label="Text direction" datasource="ltr,rtl" role="inputOnly" />
+            <property name="variant" type="String" label="Variant" default="default" datasource="default,neutral" role="inputOnly" />
+            <property name="celebrationValue" type="String" label="Celebration Value" role="inputOnly" description="Optional picklist API value that arms confetti. In update mode, celebrates after a successful save to this value." />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

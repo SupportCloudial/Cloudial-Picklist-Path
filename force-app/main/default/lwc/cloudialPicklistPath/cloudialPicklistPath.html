@@ -1,0 +1,39 @@
+<template>
+  <div
+    class={pathClass}
+    dir={directionValue}
+    data-id="path"
+    data-variant={resolvedVariant}
+    role="group"
+    aria-label="Picklist path"
+  >
+    <template for:each={resolvedSteps} for:item="step">
+      <button
+        key={step.value}
+        type="button"
+        class={step.buttonClass}
+        data-value={step.value}
+        disabled={step.isDisabled}
+        onclick={handleStepClick}
+      >
+        <span class="path__step-inner" data-id="step-label">{step.label}</span>
+      </button>
+    </template>
+  </div>
+
+  <template lwc:if={isCelebrating}>
+    <div
+      class="celebration celebration--active"
+      data-id="celebration"
+      aria-hidden="true"
+    >
+      <template for:each={celebrationParticles} for:item="particle">
+        <span
+          key={particle.id}
+          class="celebration__particle"
+          style={particle.style}
+        ></span>
+      </template>
+    </div>
+  </template>
+</template>

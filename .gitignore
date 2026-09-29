@@ -1,0 +1,11 @@
+.sf/
+.sfdx/
+.vscode/
+node_modules/
+coverage/
+test-results/
+*.log
+.env
+.env.*
+!.env.example
+.scratch/dev-edition-smoke/
