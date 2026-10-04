@@ -17,7 +17,6 @@ After installing the managed package (namespace `CloudialPackage`):
   steps={steps}
   value={status}
   interaction="event"
-  direction="ltr"
   variant="default"
   celebration-value="Activated"
   onpathstepclick={handlePathStepClick}
@@ -50,13 +49,17 @@ Cross-namespace nesting requires Lightning Web Security in the subscriber org.
 
 - **Nested LWC** — full public property surface (see `docs/API.md`).
 - **Lightning App Page / Record Page** — App Builder properties for object/field,
-  record id, interaction, value, direction, variant, and celebration value.
+  record id, interaction, value, variant, and celebration value. Leave
+  `direction` empty to inherit org/page locale (recommended).
 - **Flow Screen** — `value` is input/output; interaction, object/field/record
-  context, direction, variant, and celebration value are inputs.
+  context, variant, and celebration value are inputs.
 
 ## Direction and theming
 
-- `direction`: `ltr`, `rtl`, or empty (inherit). RTL mirrors chevron clip-paths.
+- Default: inherit org/page direction. Chevrons mirror via CSS `:dir(rtl)`.
+- Optional nested override: `direction` `ltr` / `rtl` (also still in App Builder
+  for managed upgrade compatibility — leave empty in practice).
+- Step labels follow org picklist translations (`getPicklistValues`).
 - `variant`: `default` or `neutral`.
 - CSS custom properties (preferred for product branding):
   - `--cloudial-picklist-path-border`

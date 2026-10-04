@@ -21,7 +21,7 @@ managed component from a no-namespace (or other-namespace) LWC.
 | `excludedValues` | `String[]` | `[]` | API values hidden from the path. |
 | `labelOverrides` | `Object` | `{}` | API value → display label. |
 | `disabledValues` | `String[]` | `[]` | Visible but not clickable. |
-| `direction` | `String` | `""` | `ltr`, `rtl`, or empty to inherit. |
+| `direction` | `String` | `""` | `ltr`, `rtl`, or empty to inherit org/page direction (recommended). Still exposed in App Builder/Flow for managed upgrade compatibility. |
 | `variant` | `String` | `default` | `default` (blue current) or `neutral` (gray current). |
 | `celebrationValue` | `String` | — | Optional single API value that arms celebration. |
 
@@ -116,9 +116,12 @@ when set on the host after the preset.
 
 ### Direction
 
-`direction="rtl"` sets `dir="rtl"` on the path root and mirrors chevron
-clip-paths. Empty `direction` omits `dir` so the control inherits page/locale
-direction. Layout spacing uses logical inline properties.
+Prefer empty `direction` so the path inherits org/page directionality. Chevron
+clip-paths use CSS `:dir(rtl)`, so inherited RTL mirrors correctly without
+setting the attribute. Explicit `direction="rtl"` / `"ltr"` still sets `dir` on
+the path root for nested hosts and tests. Layout spacing uses logical inline
+properties. Picklist step labels come from org describe/`getPicklistValues`
+(Translation Workbench); the package does not ship value translations.
 
 ## Celebration
 

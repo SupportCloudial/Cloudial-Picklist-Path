@@ -54,7 +54,8 @@ export default class CloudialPicklistPath extends LightningElement {
   @api disabledValues = [];
 
   /**
-   * Text direction: `ltr`, `rtl`, or empty to inherit from the host page/locale.
+   * Text direction override for nested hosts/tests: `ltr`, `rtl`, or empty.
+   * Empty inherits org/page direction (App Builder / Flow do not expose this).
    */
   @api direction = "";
 
