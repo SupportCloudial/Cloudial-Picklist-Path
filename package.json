@@ -1,6 +1,6 @@
 {
   "name": "cloudial-picklist-path",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "private": true,
   "description": "Reusable Salesforce chevron picklist path for composed LWCs, Flow screens, and record pages.",
   "scripts": {

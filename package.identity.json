@@ -9,14 +9,15 @@
     "Interaction modes: event, update, and readOnly",
     "Nested LWC, Flow Screen, and Lightning record page exposure",
     "Excluded values, label overrides, and disabled steps",
-    "LTR/RTL direction and CSS custom property theming",
+    "Org/page RTL inherit with mirrored chevrons; optional direction override for nested hosts",
+    "CSS custom property theming",
     "Optional celebration confetti with reduced-motion skip"
   ],
   "whenToUse": "Use when a Salesforce UI needs a reusable picklist progress path that can be nested, placed on a record page or Flow screen, and optionally write the field via Lightning Data Service.",
   "repository": "https://github.com/SupportCloudial/Cloudial-Picklist-Path",
   "packageType": "managed",
   "status": "released",
-  "version": "1.0.0",
-  "subscriberPackageVersionId": "04tJ6000000Lx39IAC",
-  "installUrl": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ6000000Lx39IAC"
+  "version": "1.3.0",
+  "subscriberPackageVersionId": "04tJ6000000Lx5AIAS",
+  "installUrl": "https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ6000000Lx5AIAS"
 }
