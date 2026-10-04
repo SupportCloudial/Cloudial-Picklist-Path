@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { createElement } from "lwc";
 import CloudialPicklistPath from "c/cloudialPicklistPath";
 import {
@@ -277,6 +279,16 @@ describe("c-cloudial-picklist-path", () => {
     element.direction = "";
     await flush();
     expect(pathRoot(element).hasAttribute("dir")).toBe(false);
+  });
+
+  it("mirrors chevrons with :dir(rtl) so inherited page direction works", () => {
+    // jsdom does not apply :dir() clip-paths; lock the CSS contract instead.
+    const css = readFileSync(
+      join(__dirname, "../cloudialPicklistPath.css"),
+      "utf8"
+    );
+    expect(css).toMatch(/\.path:dir\(rtl\)\s+\.path__step\s*\{/);
+    expect(css).not.toMatch(/\.path\[dir=["']rtl["']\]/);
   });
 
   it("exposes default and neutral variants on the path root", async () => {

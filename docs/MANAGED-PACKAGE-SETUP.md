@@ -6,11 +6,15 @@ only when a Cloudial Partner Business Org administrator is available.
 ## Current release
 
 - Package ID: `0HoJ6000000005zKAA`
-- Version: `1.0.0`
-- Subscriber package version: `04tJ6000000Lx39IAC`
+- Version: `1.3.0`
+- Subscriber package version: `04tJ6000000Lx5AIAS`
 - Installation key: none
 - Install URL:
-  `https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ6000000Lx39IAC`
+  `https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ6000000Lx5AIAS`
+- Notes: Built with `config/project-scratch-def-previous.json` (`release: previous`)
+  so Winter ’26 subscriber orgs can install. App Builder still exposes `direction`
+  for managed-package upgrade compatibility; leave it empty to inherit org/page
+  direction.
 
 ## Permanent ownership
 
@@ -62,7 +66,9 @@ the PBO settings or user permissions.
 Create the version without an installation key:
 
 ```powershell
-sf package version create --package "Cloudial Picklist Path" --installation-key-bypass --code-coverage --wait 60 --target-dev-hub CloudialPBO
+# During Salesforce release transitions, target subscriber orgs still on the
+# previous release with: --definition-file config/project-scratch-def-previous.json
+sf package version create --package "Cloudial Picklist Path" --definition-file config/project-scratch-def-previous.json --installation-key-bypass --code-coverage --wait 60 --target-dev-hub CloudialPBO
 ```
 
 Beta versions can be installed only in scratch orgs and sandboxes. Create a

@@ -9,3 +9,6 @@ test-results/
 .env.*
 !.env.example
 .scratch/dev-edition-smoke/
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat

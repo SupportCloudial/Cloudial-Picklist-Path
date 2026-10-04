@@ -100,8 +100,12 @@
   );
 }
 
-/* Mirrored chevrons when direction is explicitly rtl (or inherited via dir). */
-.path[dir="rtl"] .path__step {
+/*
+ * Mirrored chevrons for RTL directionality.
+ * Use :dir(rtl) so inherited page/locale direction matches, not only dir="rtl"
+ * set via the optional @api direction override.
+ */
+.path:dir(rtl) .path__step {
   clip-path: polygon(
     100% 0,
     var(--cpp-chevron) 0,
@@ -112,7 +116,7 @@
   );
 }
 
-.path[dir="rtl"] .path__step:first-child {
+.path:dir(rtl) .path__step:first-child {
   clip-path: polygon(
     100% 0,
     var(--cpp-chevron) 0,
@@ -122,7 +126,7 @@
   );
 }
 
-.path[dir="rtl"] .path__step:last-child {
+.path:dir(rtl) .path__step:last-child {
   clip-path: polygon(
     100% 0,
     0 0,
@@ -132,7 +136,7 @@
   );
 }
 
-.path[dir="rtl"] .path__step:not(:last-child)::after {
+.path:dir(rtl) .path__step:not(:last-child)::after {
   clip-path: polygon(
     100% 0,
     0 50%,

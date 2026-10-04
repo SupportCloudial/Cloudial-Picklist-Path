@@ -18,7 +18,8 @@
             <property name="value" type="String" label="Value" description="Current picklist API value. Leave empty on record pages to wire the field from the record." />
             <property name="interaction" type="String" label="Interaction" default="event" datasource="event,update,readOnly" description="event: notify parent; update: write via Lightning Data Service; readOnly: display only." />
             <property name="disabled" type="Boolean" label="Disabled" default="false" />
-            <property name="direction" type="String" label="Text direction" datasource="ltr,rtl" description="Optional. Empty inherits page/locale direction." />
+            <!-- Kept for managed-package upgrade compatibility; leave empty so org/page direction is used. -->
+            <property name="direction" type="String" label="Text direction" datasource="ltr,rtl" description="Leave empty to inherit org/page direction (recommended). Explicit ltr/rtl overrides inherit." />
             <property name="variant" type="String" label="Variant" default="default" datasource="default,neutral" description="Color preset. Override further with CSS custom properties." />
             <property name="celebrationValue" type="String" label="Celebration Value" description="Optional picklist API value that arms confetti. In update mode, celebrates after a successful save to this value." />
         </targetConfig>
@@ -30,7 +31,8 @@
             <property name="recordId" type="String" label="Record Id" role="inputOnly" />
             <property name="recordTypeId" type="String" label="Record Type Id" role="inputOnly" />
             <property name="disabled" type="Boolean" label="Disabled" default="false" role="inputOnly" />
-            <property name="direction" type="String" label="Text direction" datasource="ltr,rtl" role="inputOnly" />
+            <!-- Kept for managed-package upgrade compatibility; leave empty so org/page direction is used. -->
+            <property name="direction" type="String" label="Text direction" datasource="ltr,rtl" role="inputOnly" description="Leave empty to inherit org/page direction (recommended)." />
             <property name="variant" type="String" label="Variant" default="default" datasource="default,neutral" role="inputOnly" />
             <property name="celebrationValue" type="String" label="Celebration Value" role="inputOnly" description="Optional picklist API value that arms confetti. In update mode, celebrates after a successful save to this value." />
         </targetConfig>
